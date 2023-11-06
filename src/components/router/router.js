@@ -16,6 +16,10 @@ import Users from "../path/dashboards/Users";
 import Booking from "../path/dashboards/Booking";
 import Problem from "../path/Problem/Problem";
 import PendingServices from "../path/dashboards/PendingServices";
+import RessionPortal from "../layout/RessionPortal";
+import RegisterRession from "../path/ressionPortal/RegisterRession";
+import RessionProdan from "../path/ressionPortal/RessionProdan";
+import RessionFront from "../path/ressionPortal/RessionFront";
 
 
 
@@ -85,6 +89,24 @@ const router=createBrowserRouter([
                 element:<Booking></Booking>
             },
            
+        ]
+    },
+    {
+        path:'/ression',
+        element:<RessionPortal></RessionPortal>,
+        children:[
+            {
+                path:'/ression',
+                element:<RessionFront></RessionFront>
+            },
+            {
+                path:'/ression/register',
+                element:<RegisterRession></RegisterRession>
+            },
+            {
+                path:'/ression/prodan',
+                element:<RessionProdan></RessionProdan>
+            }
         ]
     }
     

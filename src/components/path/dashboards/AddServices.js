@@ -33,7 +33,8 @@ const AddServices = () => {
           title: data.title,
           description:data.description,
           img:imgData.data.url,
-          price:data.price
+          price:data.price,
+          status:'Pending'
         }
 
         fetch('http://localhost:4000/addService',{

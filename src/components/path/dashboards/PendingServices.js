@@ -12,6 +12,15 @@ const PendingServices = () => {
     // setChange('Done');
     // setActive(!active);
 
+    fetch(`http://localhost:4000/addService/${pen._id}`,{
+      method:'PUT'
+    }).then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      toast.success('successfully updated the status ........');
+      refetch();
+    })
+
     const done = {
       title: pen.title,
       description: pen.description,
@@ -38,7 +47,7 @@ const PendingServices = () => {
         console.log(error);
       });
   };
-  const { data: pending = [] } = useQuery({
+  const { data: pending = [],refetch } = useQuery({
     queryKey: ["service"],
     queryFn: async () => {
       const res = await fetch("http://localhost:4000/addService");
@@ -68,7 +77,7 @@ const PendingServices = () => {
                     onClick={() => handlePending(pen)}
                     className="btn btn-primary"
                   >
-                    Pending
+                    {pen.status}
                   </button>
                   {/* style={{ backgroundColor: active ? "" : "red" }} */}
                 </div>
